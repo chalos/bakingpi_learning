@@ -1,0 +1,1 @@
+../lesson4/kernel.ld

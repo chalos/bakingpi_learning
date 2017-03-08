@@ -1,0 +1,21 @@
+
+Timer in Raspi
+==============
+
+Base address: 20003000
+
++0 [4] Control/Status
++4 [8] 64bits 1MHz counter increments
++12 [4] Comparison register 0
++16 [4] Comparison register 1
++20 [4] Comparison register 2
++24 [4] Comparison register 3
+
+- Will increase the increment counter, and compare to each comparison regs
+- Update the target status register when target comparison register equal to lower 32 bits increment counter
+
+Option to implement timer
+-------------------------
+
+1. Use the foundamental above, but the tutorials said it will only check equal, so when increment counter > comparison register it will not halt
+2. Implement a timer functions using looping <--

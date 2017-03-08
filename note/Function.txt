@@ -1,0 +1,24 @@
+
+Function ARM ASM
+================
+
+- Standard says that r0-r3 will be input of function in order
+  - 1 argument: [r0], 2 argument [r0,r1], so on...
+
+- r0,r1 will always be output
+
+- r4-r12 should be not affected by function calls
+  - always be the same before enter and after leave function
+
+> ARM ABI register usage
+> Reg   | Type | Preserved
+> ------|------|-----------
+> R0-1  | A, R | No
+> R2-3  | A    | No
+> R4-12 | GP   | Yes
+> LR    | RetAd| No
+> SP    | StkPt| Yes (ARMv6)
+
+- always check the correct range of ABI input (dangerous not to in hw)
+
+- cheatsheet: N = N+3 --> N = N*2+N

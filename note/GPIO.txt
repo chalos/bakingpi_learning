@@ -1,0 +1,26 @@
+
+GPIO explain
+============
+
+>  Byte  | Name
+> -------|--------------------
+>  00:24 | Function selection
+>  28:36 | Turn on pin (actually turn off current)
+>  40:48 | Turn off pin (actually turn on current)
+>  52:60 | Pin input
+
+To turn on pin 16th GPIO:
+  1. Function selection:
+    - 4 Bytes (24 Bytes total) mapping to 10 GPIOs (54 totals)
+    - Every 3 bits = 1 GPIO, 30 bits of 4 Bytes used only (1 Byte = 8 bits)
+    - GPIO 16: On base 4 Bytes offset (10 GPIOs), set value of 1 << 18 bits (6 GPIO x 3 bits)
+
+  2. Turn on/off pin:
+    - GPIO off = high, on = low
+    - GPIO 16 on: pull turn off pin 16 bit up
+
+
+Or more advanced:
+> offset = pinNum /32 *4
+> gpioAddr = 0x20200000 + offset
+> setBit = 1 << (pinNum %32)
